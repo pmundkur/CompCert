@@ -673,6 +673,7 @@ let _ =
       | "ia32"    -> if Configuration.abi = "macosx"
                      then Machine.x86_32_macosx
                      else Machine.x86_32
+      | "rv32"    -> Machine.rv32_g
       | _         -> assert false
       end;
     Builtins.set C2C.builtins;

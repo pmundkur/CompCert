@@ -18,6 +18,9 @@ else ifeq ($(MODEL),e5500)
 VPATH=powerpc/ppc64 $(ARCH)
 endif
 endif
+ifeq ($(ARCH),rv32)
+VPATH=c $(ARCH)
+endif
 
 ifeq ($(strip $(HAS_RUNTIME_LIB)),true)
 all: $(LIB)

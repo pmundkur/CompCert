@@ -108,7 +108,7 @@ let asm = tool_absolute_path (get_config_list "asm")
 let linker = tool_absolute_path (get_config_list "linker")
 let arch =
   match get_config_string "arch" with
-  | "powerpc"|"arm"|"ia32" as a -> a
+  | "powerpc"|"arm"|"ia32"|"rv32" as a -> a
   | v -> bad_config "arch" [v]
 let model = get_config_string "model"
 let abi = get_config_string "abi"

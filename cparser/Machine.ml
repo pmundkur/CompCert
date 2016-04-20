@@ -177,6 +177,9 @@ let ppc_32_diab_bigendian =
 let arm_littleendian =
   { ilp32ll64 with name = "arm" }
 
+let rv32_g =
+  { ilp32ll64 with name = "rv32g" }
+
 (* Add GCC extensions re: sizeof and alignof *)
 
 let gcc_extensions c =
