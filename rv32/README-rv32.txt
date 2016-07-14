@@ -11,6 +11,9 @@ Setting up RV32G Dependencies
 You will need the RISC-V Newlib toolchain.
 https://github.com/riscv/riscv-tools/blob/master/README.md#newlibman
 
+Important: You will need very recent versions of the riscv-isa-sim and
+riscv-pk submodules (i.e. no older than Jul 13 2016).
+
 When building the toolchain, you will need to enable 32-bit support:
 
 - Change the following line in build.sh
