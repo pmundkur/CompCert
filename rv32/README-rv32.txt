@@ -31,6 +31,8 @@ When building the toolchain, you will need to enable 32-bit support:
       riscv32-unknown-elf
     This will allow you to install 32-bit pk along-side 64-bit pk.
 
+  Then run make clean && make && make install.
+
 Compiling CompCert for RV32G
 ----------------------------
 
