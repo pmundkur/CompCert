@@ -53,8 +53,7 @@ Compiling using CompCert RV32G
 Running CompCert RV32G binaries
 -------------------------------
 
-$ spike --isa=RV32 /path/to/32bit/pk program.exe
-
+$ spike --isa=RV32 /path/to/toolchain-install-dir/riscv32-unknown-elf/bin/pk program.exe
 
 Known issues
 ------------
