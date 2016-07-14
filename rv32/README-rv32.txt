@@ -1,6 +1,7 @@
 This is a preliminary and very alpha port of CompCert 2.6 to 32-bit
-RISC-V, specifically RV32G.  It currently uses the gcc newlib
-toolchain as the backend to generate RV32G binaries.
+RISC-V, specifically RV32G.  The port consumes C programs and
+generates RV32G assembly files.  It currently uses the gcc newlib
+toolchain as the backend to assemble and link RV32G binaries.
 
 Please read the main CompCert readme for CompCert dependencies.
 
@@ -13,11 +14,8 @@ https://github.com/riscv/riscv-tools/blob/master/README.md#newlibman
 When building the toolchain, you will need to enable 32-bit support:
 
 - Change the following line in build.sh
-
      build_project riscv-gnu-toolchain --prefix=$RISCV
-
   to
-
      build_project riscv-gnu-toolchain --prefix=$RISCV --enable-multilib
 
 - You will need to manually build a 32-bit pk.  After the build script
@@ -29,7 +27,8 @@ When building the toolchain, you will need to enable 32-bit support:
       riscv64-unknown-elf
     to
       riscv32-unknown-elf
-    This will allow you to install 32-bit pk along-side 64-bit pk.
+    This will allow you to install the 32-bit pk along-side the 64-bit
+    pk.
 
   Then run make clean && make && make install.
 
