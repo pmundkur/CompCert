@@ -22,8 +22,6 @@ Require Import Fappli_IEEE_bits.
 
 Definition big_endian := false.
 
-(* TODO: Fix placeholder values below (copied from PowerPC). *)
-
 Notation align_int64 := 8%Z (only parsing).
 Notation align_float64 := 8%Z (only parsing).
 
@@ -39,7 +37,7 @@ Program Definition default_pl_32 : bool * nan_pl 24 :=
 Definition choose_binop_pl_32 (s1: bool) (pl1: nan_pl 24) (s2: bool) (pl2: nan_pl 24) :=
   false.                        (**r always choose first NaN *)
 
-Definition float_of_single_preserves_sNaN := true.
+Definition float_of_single_preserves_sNaN := false.
 
 Global Opaque big_endian
               default_pl_64 choose_binop_pl_64
