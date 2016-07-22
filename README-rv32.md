@@ -14,35 +14,28 @@ You will need the RISC-V [Newlib toolchain](https://github.com/riscv/riscv-tools
 
 **Important:** The RISC-V toolchain is often in a state of flux.  The
 following has been tested with the _master_ branch of riscv-tools, as
-of July 15th, 2016.  The submodules of riscv-tools will pull in most
+of July 21st, 2016.  The submodules of riscv-tools will pull in most
 of the appropriate versions of the toolchain submodules.  However, you
 will need to update the riscv-isa-sim and riscv-pk submodules to their
-latest _master_ versions as of July 15th.
+latest _master_ versions as of July 21st.
 
 When building the toolchain, you will need to enable 32-bit support:
 
-1. Change the following line in build.sh
+1. Change the following lines in `riscv-tools/build.sh`
 ```
 - build_project riscv-gnu-toolchain --prefix=$RISCV
+- CC= CXX= build_project riscv-pk --prefix=$RISCV/riscv64-unknown-elf --host=riscv64-unknown-elf
 + build_project riscv-gnu-toolchain --prefix=$RISCV --enable-multilib
++ CC= CXX= build_project riscv-pk --prefix=$RISCV --enable-32bit --host=riscv64-unknown-elf
 ```
 
-2. You will need to manually build a 32-bit pk.  After the build script
-   builds a 64-bit pk, go into `riscv-tools/riscv-pk/build`, and edit the
-   Makefile as follows:
-
-  * Add -m32 to CFLAGS and LDFLAGS
-  * Change the base-directory of prefix from `riscv64-unknown-elf` to
-    `riscv32-unknown-elf`. This will allow you to install the 32-bit
-    pk along-side the 64-bit pk.
-
-  Then run `make clean && make && make install`.
+2. Follow the instructions for the Newlib toolchain linked above.
 
 ## Compiling CompCert for RV32G
 
 * Ensure you have the RV32G toolchain in your path.
 
-* $ ./configure rv32-elf && make
+* `$ ./configure rv32-elf && make`
 
 ## Compiling using CompCert RV32G
 
@@ -50,11 +43,11 @@ When building the toolchain, you will need to enable 32-bit support:
 
 * From the top-level CompCert directory,
 
-  $ ./ccomp -Lruntime -o program.exe program.c
+  `$ ./ccomp -Lruntime -o program.exe program.c`
 
 ## Running CompCert RV32G binaries
 
-  $ spike --isa=RV32 $RISCV/riscv32-unknown-elf/bin/pk program.exe
+  `$ spike --isa=RV32 $RISCV/riscv32-unknown-elf/bin/pk program.exe`
 
 ## Example
 
@@ -78,6 +71,6 @@ hello world 1!
   arguments.  The soft-float calling convention is also not yet
   supported.
 
-* Two minor lemmas are still to be proved in rv32/Asmgenproof1.v
+* Two minor lemmas are still to be proved in `rv32/Asmgenproof1.v`.
 
 * Extensive testing is still to be done.
