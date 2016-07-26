@@ -452,13 +452,13 @@ module Target : TARGET =
          fprintf oc "	fnmsub.d	%a, %a, %a, %a\n" freg fd freg fs1 freg fs2 freg fs3; 1
 
       | Pfcvtwd (rd, fs) ->
-         fprintf oc "	fcvt.l.d	%a, %a\n" ireg rd freg fs; 1
+         fprintf oc "	fcvt.w.d	%a, %a\n" ireg rd freg fs; 1
       | Pfcvtwud (rd, fs) ->
-         fprintf oc "	fcvt.lu.d	%a, %a\n" ireg rd freg fs; 1
+         fprintf oc "	fcvt.wu.d	%a, %a\n" ireg rd freg fs; 1
       | Pfcvtdw (fd, rs) ->
-         fprintf oc "	fcvt.d.l	%a, %a\n" freg fd ireg rs; 1
+         fprintf oc "	fcvt.d.w	%a, %a\n" freg fd ireg rs; 1
       | Pfcvtdwu (fd, rs) ->
-         fprintf oc "	fcvt.d.lu	%a, %a\n" freg fd ireg rs; 1
+         fprintf oc "	fcvt.d.wu	%a, %a\n" freg fd ireg rs; 1
 
       | Pfcvtds (fd, fs) ->
          fprintf oc "	fmv.x.s	%a, %a\n" freg fd freg fs; 1
