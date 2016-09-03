@@ -348,7 +348,10 @@ module Target : TARGET =
       | Pfence ->
          fprintf oc "	fence\n"; 1
 
-      (* floating point register move *)
+      (* floating point register move.
+         fmv.d preserves single-precision register contents, and hence
+         is applicable to both single- and double-precision moves.
+       *)
       | Pfmv (fd,fs) ->
          fprintf oc "	fmv.d	%a, %a\n"     freg fd freg fs; 1
 

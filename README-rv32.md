@@ -66,17 +66,7 @@ hello world 1!
 
 ## Known issues
 
-* Floating point is not currently supported.  There are two issues
-  involved.
-
-  CompCert uses a polymorphic register 'move' operation to move values
-  between registers that is not aware of register contents.  RV32G has
-  two move operations for floating-point, `fmv.s` and `fmv.d` for
-  single-precision and double-precision respectively; it's not clear
-  how to propagate the information needed to pick one of these for the
-  single CompCert FP move.
-
-  The other issue is full support for the RV32G stdarg/vararg calling
+* Floating point is not supported for the RV32G stdarg/vararg calling
   convention: the current RV32G port does not support floating point
   arguments.  The soft-float calling convention is also not yet
   supported.
